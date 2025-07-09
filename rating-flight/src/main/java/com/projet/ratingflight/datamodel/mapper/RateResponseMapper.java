@@ -8,5 +8,5 @@ import org.mapstruct.Mapper;
 public interface RateResponseMapper {
 
     RateResponseDTO toRateResponseDTO(RateResponseEntity rateEntity);
-    RateResponseEntity toRateResponseEntity(RateResponseDTO rateDTO);
 }
+

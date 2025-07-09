@@ -19,6 +19,10 @@ public class RateResponseEntity {
 
     @Column(name = "response_at", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime ResponseAt;
+    private LocalDateTime responseAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "rate_id", nullable = false)
+    private RateEntity rate;
 
 }

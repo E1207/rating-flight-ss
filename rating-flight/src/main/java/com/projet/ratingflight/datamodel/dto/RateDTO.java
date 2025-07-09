@@ -1,8 +1,12 @@
 package com.projet.ratingflight.datamodel.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.projet.ratingflight.datamodel.enums.RateStatus;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 public class RateDTO {
@@ -13,11 +17,17 @@ public class RateDTO {
 
     private String comment;
 
+    private String flightNumber;
+
+    private String company;
+
+    private LocalDate flightDate;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime submittedAt;
 
-    private FlightDTO flight;
+    private RateStatus status;
 
-    private RateResponseDTO rateResponse;
+    private List<RateResponseDTO> rateResponse;
 
 }
-

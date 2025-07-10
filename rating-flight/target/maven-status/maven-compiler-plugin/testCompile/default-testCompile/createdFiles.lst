@@ -1,0 +1,5 @@
+com\projet\ratingflight\datamodel\entities\RateResponseEntityTest.class
+com\projet\ratingflight\datamodel\entities\RateEntityTest.class
+com\projet\ratingflight\RatingFlightApplicationTests.class
+com\projet\ratingflight\controller\RateResponseControllerTest.class
+com\projet\ratingflight\controller\RateControllerTest.class

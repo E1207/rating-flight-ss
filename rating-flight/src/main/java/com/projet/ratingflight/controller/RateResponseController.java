@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Contrôleur REST gérant les réponses aux évaluations de vols.
+ * Fournit les endpoints pour la création et la consultation des réponses aux évaluations.
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/rates")
@@ -21,11 +25,21 @@ public class RateResponseController {
 
     private final IRateResponseService rateResponseService;
 
+    /**
+     * Récupère toutes les réponses aux évaluations
+     * @return Liste de toutes les réponses
+     */
     @GetMapping("/responses")
     public List<RateResponseDTO> getAllRates() {
         return rateResponseService.getAllRates();
     }
 
+    /**
+     * Crée une nouvelle réponse pour une évaluation donnée
+     * @param rateId Identifiant de l'évaluation
+     * @param request Contenu de la réponse
+     * @return La réponse créée
+     */
     @PostMapping("/{rateId}/responses")
     public ResponseEntity<RateResponseDTO> createResponse(
             @PathVariable Long rateId,

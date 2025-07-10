@@ -1,4 +1,3 @@
-
 -- Insertion des avis
 INSERT INTO rate (rating, comment, flight_number, company, flight_date, submitted_at, status) VALUES
 (5, 'Excellent vol, personnel très attentionné', 'AF1234', 'Air France', '2025-07-06', '2025-07-06 10:30:00', 'PUBLISHED'),
@@ -19,4 +18,5 @@ INSERT INTO rate_response (response, response_at, rate_id) VALUES
 INSERT INTO rate_response (response, response_at, rate_id) VALUES
 ('Pouvez-vous nous donner plus de détails sur le problème des bagages ?', '2025-07-10 10:30:00', 5),
 ('Merci encore pour votre fidélité !', '2025-07-06 14:00:00', 1);
+
 

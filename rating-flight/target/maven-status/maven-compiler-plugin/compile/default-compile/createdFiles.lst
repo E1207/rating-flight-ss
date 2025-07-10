@@ -11,10 +11,12 @@ com\projet\ratingflight\datamodel\mapper\RateMapper.class
 com\projet\ratingflight\datamodel\enums\RateStatus.class
 com\projet\ratingflight\datamodel\entities\RateEntity$RateEntityBuilder.class
 com\projet\ratingflight\controller\RateResponseController.class
+com\projet\ratingflight\datamodel\dto\RateDTO$RateDTOBuilder.class
 com\projet\ratingflight\service\IRateResponseService.class
 com\projet\ratingflight\datamodel\mapper\RateMapperImpl.class
 com\projet\ratingflight\request\RateResponserequest$RateResponserequestBuilder.class
 com\projet\ratingflight\datamodel\mapper\RateResponseMapperImpl.class
+com\projet\ratingflight\datamodel\dto\RateResponseDTO$RateResponseDTOBuilder.class
 com\projet\ratingflight\service\impl\RateService.class
 com\projet\ratingflight\datamodel\dto\RateResponseDTO.class
 com\projet\ratingflight\datamodel\dto\RateDTO.class

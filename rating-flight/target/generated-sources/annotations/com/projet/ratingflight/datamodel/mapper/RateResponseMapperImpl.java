@@ -2,13 +2,12 @@ package com.projet.ratingflight.datamodel.mapper;
 
 import com.projet.ratingflight.datamodel.dto.RateResponseDTO;
 import com.projet.ratingflight.datamodel.entities.RateResponseEntity;
-import java.time.LocalDateTime;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-07-10T01:43:26+0200",
+    date = "2025-07-10T02:18:39+0200",
     comments = "version: 1.6.3, compiler: javac, environment: Java 21.0.7 (Eclipse Adoptium)"
 )
 @Component
@@ -20,16 +19,27 @@ public class RateResponseMapperImpl implements RateResponseMapper {
             return null;
         }
 
-        Long id = null;
-        String response = null;
-        LocalDateTime responseAt = null;
+        RateResponseDTO.RateResponseDTOBuilder rateResponseDTO = RateResponseDTO.builder();
 
-        id = rateEntity.getId();
-        response = rateEntity.getResponse();
-        responseAt = rateEntity.getResponseAt();
+        rateResponseDTO.id( rateEntity.getId() );
+        rateResponseDTO.response( rateEntity.getResponse() );
+        rateResponseDTO.responseAt( rateEntity.getResponseAt() );
 
-        RateResponseDTO rateResponseDTO = new RateResponseDTO( id, response, responseAt );
+        return rateResponseDTO.build();
+    }
 
-        return rateResponseDTO;
+    @Override
+    public RateResponseEntity toRateResponseEntity(RateResponseDTO rateResponseDTO) {
+        if ( rateResponseDTO == null ) {
+            return null;
+        }
+
+        RateResponseEntity rateResponseEntity = new RateResponseEntity();
+
+        rateResponseEntity.setId( rateResponseDTO.getId() );
+        rateResponseEntity.setResponse( rateResponseDTO.getResponse() );
+        rateResponseEntity.setResponseAt( rateResponseDTO.getResponseAt() );
+
+        return rateResponseEntity;
     }
 }

@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+/**
+ * Contrôleur REST gérant les opérations liées aux évaluations de vols.
+ * Fournit les endpoints pour la création, la consultation et la mise à jour des évaluations.
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/rates")
@@ -18,17 +21,31 @@ public class RateController {
 
     private final IRateService rateService;
 
+    /**
+     * Récupère toutes les évaluations
+     * @return Liste de toutes les évaluations
+     */
+    @GetMapping
+    public List<RateDTO> getAllRates() {
+        return rateService.getAllRates();
+    }
 
-     @GetMapping
-     public List<RateDTO> getAllRates() {
-         return rateService.getAllRates();
-     }
-
+    /**
+     * Récupère les évaluations par statut
+     * @param status Le statut des évaluations à récupérer
+     * @return Liste des évaluations ayant le statut spécifié
+     */
     @GetMapping("/status/{status}")
     public List<RateDTO> getRatesByStatus(@PathVariable RateStatus status) {
         return rateService.getRatesByStatus(status);
     }
 
+    /**
+     * Met à jour le statut d'une évaluation
+     * @param id Identifiant de l'évaluation
+     * @param status Nouveau statut à appliquer
+     * @return L'évaluation mise à jour
+     */
     @PatchMapping("/{id}/status")
     public ResponseEntity<RateDTO> updateStatus(
             @PathVariable Long id,
@@ -41,11 +58,20 @@ public class RateController {
         }
     }
 
+    /**
+     * Récupère toutes les évaluations publiées
+     * @return Liste des évaluations publiées
+     */
     @GetMapping("/published")
     public List<RateDTO> getPublishedRates() {
         return rateService.getPublishedRates();
     }
 
+    /**
+     * Crée une nouvelle évaluation
+     * @param rateDTO Les données de l'évaluation à créer
+     * @return L'évaluation créée
+     */
     @PostMapping
     public RateDTO createRate(@RequestBody RateDTO rateDTO) {
         return rateService.saveRate(rateDTO);

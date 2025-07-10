@@ -31,12 +31,16 @@ public class RateResponseService implements IRateResponseService {
 
     @Override
     public RateResponseDTO createResponse(Long rateId, String response) {
+        if (response == null || response.trim().isEmpty()) {
+            throw new IllegalArgumentException("La réponse ne peut pas être vide");
+        }
+
         RateEntity rate = rateRepository.findById(rateId)
-                .orElseThrow(() -> new RuntimeException("Avis non trouvé avec l'ID : " + rateId));
+                .orElseThrow(() -> new EntityNotFoundException("Avis non trouvé avec l'ID : " + rateId));
 
         RateResponseEntity rateResponse = new RateResponseEntity();
         rateResponse.setRate(rate);
-        rateResponse.setResponse(response);
+        rateResponse.setResponse(response.trim());
         rateResponse.setResponseAt(LocalDateTime.now());
 
         RateResponseEntity savedResponse = rateResponseRepository.save(rateResponse);

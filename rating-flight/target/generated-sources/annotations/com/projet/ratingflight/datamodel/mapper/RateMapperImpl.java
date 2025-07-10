@@ -4,7 +4,6 @@ import com.projet.ratingflight.datamodel.dto.RateDTO;
 import com.projet.ratingflight.datamodel.dto.RateResponseDTO;
 import com.projet.ratingflight.datamodel.entities.RateEntity;
 import com.projet.ratingflight.datamodel.entities.RateResponseEntity;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-07-10T01:43:25+0200",
+    date = "2025-07-10T02:11:01+0200",
     comments = "version: 1.6.3, compiler: javac, environment: Java 21.0.7 (Eclipse Adoptium)"
 )
 @Component
@@ -24,19 +23,19 @@ public class RateMapperImpl implements RateMapper {
             return null;
         }
 
-        RateDTO rateDTO = new RateDTO();
+        RateDTO.RateDTOBuilder rateDTO = RateDTO.builder();
 
-        rateDTO.setId( rateEntity.getId() );
-        rateDTO.setRating( rateEntity.getRating() );
-        rateDTO.setComment( rateEntity.getComment() );
-        rateDTO.setFlightNumber( rateEntity.getFlightNumber() );
-        rateDTO.setCompany( rateEntity.getCompany() );
-        rateDTO.setFlightDate( rateEntity.getFlightDate() );
-        rateDTO.setSubmittedAt( rateEntity.getSubmittedAt() );
-        rateDTO.setStatus( rateEntity.getStatus() );
-        rateDTO.setRateResponse( rateResponseEntityListToRateResponseDTOList( rateEntity.getRateResponse() ) );
+        rateDTO.id( rateEntity.getId() );
+        rateDTO.rating( rateEntity.getRating() );
+        rateDTO.comment( rateEntity.getComment() );
+        rateDTO.flightNumber( rateEntity.getFlightNumber() );
+        rateDTO.company( rateEntity.getCompany() );
+        rateDTO.flightDate( rateEntity.getFlightDate() );
+        rateDTO.submittedAt( rateEntity.getSubmittedAt() );
+        rateDTO.status( rateEntity.getStatus() );
+        rateDTO.rateResponse( rateResponseEntityListToRateResponseDTOList( rateEntity.getRateResponse() ) );
 
-        return rateDTO;
+        return rateDTO.build();
     }
 
     @Override
@@ -65,17 +64,13 @@ public class RateMapperImpl implements RateMapper {
             return null;
         }
 
-        Long id = null;
-        String response = null;
-        LocalDateTime responseAt = null;
+        RateResponseDTO.RateResponseDTOBuilder rateResponseDTO = RateResponseDTO.builder();
 
-        id = rateResponseEntity.getId();
-        response = rateResponseEntity.getResponse();
-        responseAt = rateResponseEntity.getResponseAt();
+        rateResponseDTO.id( rateResponseEntity.getId() );
+        rateResponseDTO.response( rateResponseEntity.getResponse() );
+        rateResponseDTO.responseAt( rateResponseEntity.getResponseAt() );
 
-        RateResponseDTO rateResponseDTO = new RateResponseDTO( id, response, responseAt );
-
-        return rateResponseDTO;
+        return rateResponseDTO.build();
     }
 
     protected List<RateResponseDTO> rateResponseEntityListToRateResponseDTOList(List<RateResponseEntity> list) {

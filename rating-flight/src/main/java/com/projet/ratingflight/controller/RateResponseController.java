@@ -1,9 +1,6 @@
 package com.projet.ratingflight.controller;
 
 import com.projet.ratingflight.datamodel.dto.RateResponseDTO;
-import com.projet.ratingflight.datamodel.entities.RateEntity;
-import com.projet.ratingflight.datamodel.entities.RateResponseEntity;
-import com.projet.ratingflight.repository.RateRepository;
 import com.projet.ratingflight.request.RateResponserequest;
 import com.projet.ratingflight.service.IRateResponseService;
 import jakarta.persistence.EntityNotFoundException;
@@ -11,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**

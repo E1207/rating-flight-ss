@@ -29,10 +29,12 @@ public class RateDTO {
 
     private LocalDate flightDate;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime submittedAt;
+    @Builder.Default
+    private RateStatus status = RateStatus.PENDING;
 
-    private RateStatus status;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Builder.Default
+    private LocalDateTime submittedAt = LocalDateTime.now().withNano(0);
 
     private List<RateResponseDTO> rateResponse;
 

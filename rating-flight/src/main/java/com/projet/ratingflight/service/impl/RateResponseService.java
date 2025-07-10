@@ -14,6 +14,10 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Service gérant les réponses aux évaluations de vols.
+ * Permet de créer et consulter les réponses données aux évaluations des utilisateurs.
+ */
 @Service
 @RequiredArgsConstructor
 public class RateResponseService implements IRateResponseService {
@@ -22,6 +26,11 @@ public class RateResponseService implements IRateResponseService {
     private final RateRepository rateRepository;
     private final RateResponseMapper rateResponseMapper;
 
+    /**
+     * Récupère toutes les réponses aux évaluations enregistrées dans le système.
+     *
+     * @return Une liste de toutes les réponses sous forme de DTOs
+     */
     @Override
     public List<RateResponseDTO> getAllRates() {
         return rateResponseRepository.findAll().stream()
@@ -29,6 +38,14 @@ public class RateResponseService implements IRateResponseService {
                 .toList();
     }
 
+    /**
+     * Crée une nouvelle réponse pour une évaluation donnée.
+     * La réponse doit être non vide et associée à une évaluation existante.
+     *
+     * @param rateId L'identifiant de l'évaluation à laquelle la réponse est associée
+     * @param response Le contenu de la réponse
+     * @return La réponse créée sous forme de DTO
+     */
     @Override
     public RateResponseDTO createResponse(Long rateId, String response) {
         if (response == null || response.trim().isEmpty()) {

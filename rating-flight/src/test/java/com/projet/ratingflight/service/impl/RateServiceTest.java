@@ -114,7 +114,7 @@ class RateServiceTest {
 
         // Then
         assertNotNull(result);
-        assertEquals(RateStatus.PUBLISHED, result.getStatus());
+        assertEquals(RateStatus.PENDING, result.getStatus());
         verify(rateRepository).findById(1L);
         verify(rateRepository).save(testRateEntity);
     }
